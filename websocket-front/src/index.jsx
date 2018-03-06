@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import store from './store';
 import { router } from './router';
+import './index.less';
 
 ReactDOM.render(
   <Provider store={store}>
