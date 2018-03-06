@@ -3,7 +3,7 @@
  * Created by tianrenjie on 2017/11/9
  */
 import { createAction } from 'redux-actions';
-import { SEND_MESSAGE } from '../action/action';
+import { SEND_MESSAGE } from '../constant/constant';
 
 export const sendMessageAction = createAction(SEND_MESSAGE);
 
