@@ -30,7 +30,7 @@ class Dialog extends React.Component {
               {getFieldDecorator('content', {
                 initialValue: '请在下方输入...',
               })(
-                <TextArea rows={26} className="dialog-content" autoSize="false" disabled="true" />
+                <TextArea rows={26} className="dialog-content" disabled="true" />
               )}
             </FormItem>
             <FormItem>

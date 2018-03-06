@@ -5,12 +5,12 @@
 import React from 'react';
 import { browserHistory, Router, Route, IndexRoute } from 'react-router';
 import App from './App';
-import Dialog from './component/Dialog';
+import DialogContainer from './container/DialogConatainer';
 
 export const router = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Dialog} />
+      <IndexRoute component={DialogContainer} />
     </Route>
   </Router>
 );
