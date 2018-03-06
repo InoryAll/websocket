@@ -13,6 +13,18 @@ export const sendMessageAction = createAction(SEND_MESSAGE);
  */
 export function sendMesasge() {
   return (dispatch) => {
+    fetch('', {
+      method: 'POST',
+    }).then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      return {};
+    }).then((data) => {
+      console.log(data);
+    }).catch((e) => {
+      console.log(e);
+    });
     dispatch(sendMessageAction());
   };
 }
