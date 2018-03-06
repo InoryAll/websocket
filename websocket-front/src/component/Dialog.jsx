@@ -9,7 +9,7 @@ class Dialog extends React.Component {
   static propTypes = {};
   render() {
     return (
-      <div>
+      <div className="Wapper">
         <Row>
           <Col span={12} offset={6}>
             <Card>

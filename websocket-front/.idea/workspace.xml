@@ -158,7 +158,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="168" />
     <option name="y" value="56" />
     <option name="width" value="1674" />
@@ -202,6 +202,17 @@
             <path>
               <item name="websocket-front" type="b2602c69:ProjectViewProjectNode" />
               <item name="websocket-front" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="websocket-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="websocket-front" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="websocket-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="websocket-front" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="component" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="websocket-front" type="b2602c69:ProjectViewProjectNode" />
@@ -265,15 +276,15 @@
       <option name="presentableId" value="Default" />
       <updated>1520219516699</updated>
       <workItem from="1520219517829" duration="1705000" />
-      <workItem from="1520230187382" duration="1276000" />
+      <workItem from="1520230187382" duration="1704000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2981000" />
+    <option name="totallyTimeSpent" value="3409000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21548998" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
