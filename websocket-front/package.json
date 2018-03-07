@@ -25,6 +25,7 @@
     "redux-immutable-state-invariant": "^2.1.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
+    "socket.io": "^2.0.4",
     "whatwg-fetch": "^2.0.3"
   },
   "scripts": {
