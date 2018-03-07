@@ -2,7 +2,7 @@
  * socket类，用于实时通信
  * Created by tianrenjie on 2018/3/7
  */
-const io = require('socket.io');
+import io from 'socket.io-client';
 
 class SocketUtil {
   constructor(url) {
