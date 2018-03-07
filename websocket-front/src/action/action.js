@@ -3,9 +3,11 @@
  * Created by tianrenjie on 2017/11/9
  */
 import { createAction } from 'redux-actions';
-import { SEND_MESSAGE } from '../constant/constant';
+import { ON_CONNECT, ON_DISCONNECT, SEND_MESSAGE } from '../constant/constant';
 
+export const onConnectAction = createAction(ON_CONNECT);
 export const sendMessageAction = createAction(SEND_MESSAGE);
+export const onDisconnectAction = createAction(ON_DISCONNECT);
 
 /**
  * 发送信息

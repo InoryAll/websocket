@@ -4,4 +4,6 @@
  */
 import { createSelector } from 'reselect';
 
-export const messageSelector = state => state.message;
+export const totalSelector = state => state.reducer;
+export const messageSelector = createSelector(totalSelector, reducer => reducer.message);
+export const socketSelector = createSelector(totalSelector, reducer => reducer.socket);

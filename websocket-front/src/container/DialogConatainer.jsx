@@ -34,6 +34,8 @@ class DialogConatainer extends React.Component {
   render() {
     return (
       <Dialog
+        socket={this.state.socket}
+        socketUtl={this.state.socketUtil}
         {...this.props}
       />);
   }
