@@ -52,11 +52,9 @@
       <file leaf-file-name="socketUtil.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/util/socketUtil.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="210">
               <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-              <folding>
-                <element signature="e#296#365#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -339,12 +337,12 @@
       <workItem from="1520230187382" duration="1704000" />
       <workItem from="1520304317309" duration="5948000" />
       <workItem from="1520314385419" duration="6295000" />
-      <workItem from="1520391126144" duration="8816000" />
+      <workItem from="1520391126144" duration="9480000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24468000" />
+    <option name="totallyTimeSpent" value="25132000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -832,11 +830,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/util/socketUtil.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="210">
           <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-          <folding>
-            <element signature="e#296#365#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
