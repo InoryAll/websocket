@@ -9,18 +9,34 @@ class SocketUtil {
     this.socket = null;
     this.socketUrl = url;
   }
-  initAttrs() {
+  initAttrs(callback) {
     this.socket = io.connect(this.socketUrl);
+    callback(this.socket);
   }
-  initEvents(connectCallback, messageCallback, disconnectCallback) {
-    this.socket.on('connect', (msg, connectCallback) => {
-      connectCallback(msg);
+  // initEvents(connectCallback, messageCallback, disconnectCallback) {
+  //   this.socket.on('connect', (msg, connectCallback) => {
+  //     connectCallback(msg);
+  //   });
+  //   this.socket.on('message', (msg, messageCallback) => {
+  //     messageCallback(msg);
+  //   });
+  //   this.socket.on('disconnect', (msg, disconnectCallback) => {
+  //     disconnectCallback(msg);
+  //   });
+  // }
+  attachConnectEvent(callback) {
+    this.socket.on('connect', (msg) => {
+      callback(msg);
     });
-    this.socket.on('message', (msg, messageCallback) => {
-      messageCallback(msg);
+  }
+  attachMessageEvent(callback) {
+    this.socket.on('message', (msg) => {
+      callback(msg);
     });
-    this.socket.on('disconnect', (msg, disconnectCallback) => {
-      disconnectCallback(msg);
+  }
+  attachDisconnectEvent(callback) {
+    this.socket.on('disconnect', (msg) => {
+      callback(msg);
     });
   }
 }
