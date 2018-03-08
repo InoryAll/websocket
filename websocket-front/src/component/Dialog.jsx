@@ -11,7 +11,13 @@ const { TextArea } = Input;
 class Dialog extends React.Component {
   static propTypes = {
     form: PropTypes.object.isRequired,
+    socket: PropTypes.object.isRequired,
+    socketUtil: PropTypes.object.isRequired,
   };
+  componentWillMount() {
+    const { socket, socketUtil } = this.props;
+    socketUtil.attachConnectEvent();
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {

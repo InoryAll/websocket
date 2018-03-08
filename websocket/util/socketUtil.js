@@ -4,17 +4,21 @@
  */
 var io = require('socket.io');
 
-function socketUtil(server) {
+function SocketUtil(server) {
   this.socket = io(server);
 }
-socketUtil.prototype.listenConnection = function () {
+SocketUtil.prototype.listenConnection = function () {
+  this.socket.on('connection', function () {
+    this.on('connect', function () {
+      console.log('connection has been created.');
+    });
+    this.on('message', function (data) {
+      console.log('data has been received %s',data);
+    });
+    this.on('disconnect', function () {
+      console.log('connection has been canceled.');
+    });
+  });
+};
 
-};
-socketUtil.prototype.listenMessage = function () {
-  
-};
-socketUtil.prototype.listenDisconnection = function () {
-  
-};
-
-module.exports = socketUtil;
+module.exports = SocketUtil;
