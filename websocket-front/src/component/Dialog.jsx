@@ -17,12 +17,28 @@ class Dialog extends React.Component {
   componentWillMount() {
     const { socket, socketUtil } = this.props;
     if (socket && socketUtil) {
-      socket.emit('connect');
+      socket.emit('message', { data: 'test' });
       socketUtil.attachConnectEvent((msg) => {
         if (msg.code === 1) {
           message.success('连接成功!');
+          this.setState({
+            connected: true,
+          });
         } else {
           message.error('连接失败!');
+        }
+      });
+    }
+  }
+  componentWillUnmount() {
+    const { socket, socketUtil } = this.props;
+    if (socket && socketUtil) {
+      // socket.emit('disconnectRequest');
+      socketUtil.attachDisconnectEvent((msg) => {
+        if (msg.code === 1) {
+          message.success('断开成功!');
+        } else {
+          message.error('断开失败!');
         }
       });
     }
@@ -57,7 +73,7 @@ class Dialog extends React.Component {
                     <Input rows={28} className="dialog-mesasge" placeholder="请输入消息..." />
                   </Col>
                   <Col span={4} offset={1}>
-                    <Button type="primary">发送</Button>
+                    <Button type="primary" htmlType="submit">发送</Button>
                   </Col>
                 </Row>
               )}

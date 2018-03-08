@@ -11,6 +11,7 @@ export const router = (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
       <IndexRoute component={DialogContainer} />
+      <Route path="/test" />
     </Route>
   </Router>
 );

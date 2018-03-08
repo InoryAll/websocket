@@ -35,9 +35,6 @@ class DialogConatainer extends React.Component {
       });
     });
   }
-  componentWillUnmount() {
-    const { socket, socketUtil } = this.state;
-  }
   render() {
     return (
       <Dialog

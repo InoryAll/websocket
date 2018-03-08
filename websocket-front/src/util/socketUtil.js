@@ -30,12 +30,12 @@ class SocketUtil {
     });
   }
   attachMessageEvent(callback) {
-    this.socket.on('message', (msg) => {
+    this.socket.on('messaging', (msg) => {
       callback(msg);
     });
   }
   attachDisconnectEvent(callback) {
-    this.socket.on('disconnect', (msg) => {
+    this.socket.on('disconnected', (msg) => {
       callback(msg);
     });
   }
