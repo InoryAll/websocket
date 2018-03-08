@@ -3,7 +3,7 @@
  * Created by tianrenjie on 2018/3/5
  */
 import React, { PropTypes } from 'react';
-import { Row, Col, Card, Form, Input, Button } from 'antd';
+import { Row, Col, Card, Form, Input, Button, message } from 'antd';
 import './Dialog.less';
 
 const FormItem = Form.Item;
@@ -11,12 +11,21 @@ const { TextArea } = Input;
 class Dialog extends React.Component {
   static propTypes = {
     form: PropTypes.object.isRequired,
-    socket: PropTypes.object.isRequired,
-    socketUtil: PropTypes.object.isRequired,
+    socket: PropTypes.object,
+    socketUtil: PropTypes.object,
   };
   componentWillMount() {
     const { socket, socketUtil } = this.props;
-    socketUtil.attachConnectEvent();
+    if (socket && socketUtil) {
+      socket.emit('connect');
+      socketUtil.attachConnectEvent((msg) => {
+        if (msg.code === 1) {
+          message.success('连接成功!');
+        } else {
+          message.error('连接失败!');
+        }
+      });
+    }
   }
   handleSubmit = (e) => {
     e.preventDefault();

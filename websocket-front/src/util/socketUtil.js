@@ -25,7 +25,7 @@ class SocketUtil {
   //   });
   // }
   attachConnectEvent(callback) {
-    this.socket.on('connect', (msg) => {
+    this.socket.on('connecting', (msg) => {
       callback(msg);
     });
   }

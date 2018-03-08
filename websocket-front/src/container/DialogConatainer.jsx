@@ -9,16 +9,9 @@ import Dialog from '../component/Dialog';
 import { messageSelector } from '../selector/selector';
 import { connectToServer, disConnectFromServer } from '../action/action';
 
-const linkToServer = (_this) => {
+const linkToServer = () => {
   const socketUtil = new SocketUtil('ws://127.0.0.1:3000');
-  _this.setState({
-    socketUtil,
-  });
-  socketUtil.initAttrs((socket) => {
-    _this.setState({
-      socket,
-    });
-  });
+  return socketUtil;
 };
 
 class DialogConatainer extends React.Component {
@@ -32,13 +25,24 @@ class DialogConatainer extends React.Component {
     socketUtil: null,
   };
   componentWillMount() {
-    linkToServer(this);
+    const socketUtil = linkToServer();
+    this.setState({
+      socketUtil,
+    });
+    socketUtil.initAttrs((socket) => {
+      this.setState({
+        socket,
+      });
+    });
+  }
+  componentWillUnmount() {
+    const { socket, socketUtil } = this.state;
   }
   render() {
     return (
       <Dialog
         socket={this.state.socket}
-        socketUtl={this.state.socketUtil}
+        socketUtil={this.state.socketUtil}
         {...this.props}
       />);
   }
