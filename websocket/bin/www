@@ -32,6 +32,7 @@ io.sockets.on('connection', function (socket) {
   // });
   socket.on('message', function (data) {
     console.log('data has been received %s',data);
+    socket.send(data);
   });
   socket.on('disconnectRequest', function () {
     console.log('connection has been disconnected!');

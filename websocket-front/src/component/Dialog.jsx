@@ -3,7 +3,7 @@
  * Created by tianrenjie on 2018/3/5
  */
 import React, { PropTypes } from 'react';
-import { Row, Col, Card, Form, Input, Button, message } from 'antd';
+import { Row, Col, Card, Form, Input, Button, message, notification } from 'antd';
 import io from 'socket.io-client';
 import './Dialog.less';
 
@@ -24,6 +24,14 @@ class Dialog extends React.Component {
     if (socket) {
       socket.on('connect', () => {
         message.success('连接成功!');
+      });
+      socket.on('message', (data) => {
+        notification.open({
+          message: '消息通知',
+          description: data,
+          duration: 4.5,
+          placement: 'bottomRight',
+        });
       });
       // socket.emit('my');
       // socket.on('disconnect', function () {
@@ -49,7 +57,7 @@ class Dialog extends React.Component {
       // });
     }
   }
-  componentDidMount() {
+  componentWillUnmount() {
     const { socket } = this.state;
     socket.emit('disconnectRequest');
     socket.on('disConnectEvent', () => {
@@ -74,10 +82,11 @@ class Dialog extends React.Component {
     // }
   }
   handleSubmit = (e) => {
+    const { socket } = this.state;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        socket.send(values.message);
       }
     });
   }
@@ -87,27 +96,33 @@ class Dialog extends React.Component {
       <div className="wapper">
         <Card className="dialog-card">
           <Form onSubmit={this.handleSubmit} className="login-form">
-            <FormItem>
-              {getFieldDecorator('content', {
-                initialValue: '请在下方输入...',
-              })(
-                <TextArea rows={26} className="dialog-content" disabled="true" />
-              )}
-            </FormItem>
-            <FormItem>
-              {getFieldDecorator('message', {
-                initialValue: '',
-              })(
-                <Row>
-                  <Col span={19}>
+            <Row>
+              <Col span={24}>
+                <FormItem>
+                  {getFieldDecorator('content', {
+                    initialValue: '请在下方输入...',
+                  })(
+                    <TextArea rows={26} className="dialog-content" disabled="true" />
+                  )}
+                </FormItem>
+              </Col>
+            </Row>
+            <Row>
+              <Col span={21}>
+                <FormItem>
+                  {getFieldDecorator('message', {
+                    initialValue: '',
+                  })(
                     <Input rows={28} className="dialog-mesasge" placeholder="请输入消息..." />
-                  </Col>
-                  <Col span={4} offset={1}>
-                    <Button type="primary" htmlType="submit">发送</Button>
-                  </Col>
-                </Row>
-              )}
-            </FormItem>
+                  )}
+                </FormItem>
+              </Col>
+              <Col span={2} offset={1}>
+                <FormItem>
+                  <Button type="primary" htmlType="submit">发送</Button>
+                </FormItem>
+              </Col>
+            </Row>
           </Form>
         </Card>
       </div>);
