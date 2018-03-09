@@ -26,7 +26,7 @@ class Dialog extends React.Component {
         message.success('连接成功!');
       });
       socket.on('message', (data) => {
-        notification.open({
+        notification.info({
           message: '消息通知',
           description: data,
           duration: 4.5,
