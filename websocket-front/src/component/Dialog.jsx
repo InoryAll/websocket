@@ -42,7 +42,7 @@ class Dialog extends React.Component {
           duration: 10,
           placement: 'bottomRight',
         });
-        let chat = form.getFieldValue('content');
+        let chat = form.getFieldValue('content').concat(data.user.concat('  '.concat(new Date().toLocaleString()).concat('\n')));
         chat += data.data.concat('\n');
         form.setFieldsValue({ content: chat });
       });
@@ -109,9 +109,11 @@ class Dialog extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         socket.send(values.message);
-        let chat = form.getFieldValue('content');
+        const id = socket.id.toString();
+        let chat = form.getFieldValue('content').concat(id.concat('  '.concat(new Date().toLocaleString()).concat('\n')));
         chat += values.message.concat('\n');
         form.setFieldsValue({ content: chat });
+        form.resetFields(['message']);
       }
     });
   }
