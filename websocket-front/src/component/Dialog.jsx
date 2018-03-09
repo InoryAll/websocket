@@ -4,6 +4,7 @@
  */
 import React, { PropTypes } from 'react';
 import { Row, Col, Card, Form, Input, Button, message } from 'antd';
+import io from 'socket.io-client';
 import './Dialog.less';
 
 const FormItem = Form.Item;
@@ -11,33 +12,45 @@ const { TextArea } = Input;
 class Dialog extends React.Component {
   static propTypes = {
     form: PropTypes.object.isRequired,
-    socket: PropTypes.object,
-    socketUtil: PropTypes.object,
+    // socket: PropTypes.object,
+    // socketUtil: PropTypes.object,
   };
   componentWillMount() {
-    const { socket, socketUtil } = this.props;
-    socket.on('new', function (data) {
-      console.log(data);
-      socket.emit('my');
-    });
-    // if (socket && socketUtil) {
-    //   socket.emit('message', { data: 'test' });
-    //   socketUtil.attachConnectEvent((msg) => {
-    //     if (msg.code === 1) {
-    //       message.success('连接成功!');
-    //       this.setState({
-    //         connected: true,
-    //       });
-    //     } else {
-    //       message.error('连接失败!');
-    //     }
-    //   });
-    // }
+    // const { socket, socketUtil } = this.props;
+    const socket = io.connect('http://127.0.0.1:3000');
+    if (socket) {
+      socket.on('connect', function () {
+        console.log('connect');
+      });
+        // socketUtil.attachDisconnectEvent((msg) => {
+        //   if (msg.code === 1) {
+        //     message.success('断开成功!');
+        //   } else {
+        //     message.error('断开失败!');
+        //   }
+        // });
+      // socket.connect();
+      // socketUtil.attachConnectEvent((msg) => {
+      //   if (msg.code === 1) {
+      //     message.success('连接成功!');
+      //     this.setState({
+      //       connected: true,
+      //     });
+      //   } else {
+      //     message.error('连接失败!');
+      //   }
+      // });
+    }
   }
   componentWillUnmount() {
-    const { socket, socketUtil } = this.props;
+    // socket.emit('disconnectRequest');
+    // socket.on('disConnectEvent', function () {
+    //   console.log('disconnect!');
+    //   socket.disconnect();
+    // });
+    // const { socket, socketUtil } = this.props;
     // if (socket && socketUtil) {
-    //   // socket.emit('disconnectRequest');
+    //   socket.emit('disconnect');
     //   socketUtil.attachDisconnectEvent((msg) => {
     //     if (msg.code === 1) {
     //       message.success('断开成功!');
