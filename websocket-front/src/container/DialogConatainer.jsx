@@ -25,15 +25,15 @@ class DialogConatainer extends React.Component {
     socketUtil: null,
   };
   componentWillMount() {
-    const socketUtil = linkToServer();
-    this.setState({
-      socketUtil,
-    });
-    socketUtil.initAttrs((socket) => {
-      this.setState({
-        socket,
-      });
-    });
+    // const socketUtil = linkToServer();
+    // this.setState({
+    //   socketUtil,
+    // });
+    // socketUtil.initAttrs((socket) => {
+    //   this.setState({
+    //     socket,
+    //   });
+    // });
   }
   render() {
     return (

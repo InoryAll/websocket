@@ -18,10 +18,17 @@ class Dialog extends React.Component {
   componentWillMount() {
     // const { socket, socketUtil } = this.props;
     const socket = io.connect('http://127.0.0.1:3000');
+    this.setState({
+      socket,
+    });
     if (socket) {
-      socket.on('connect', function () {
-        console.log('connect');
+      socket.on('connect', () => {
+        message.success('连接成功!');
       });
+      // socket.emit('my');
+      // socket.on('disconnect', function () {
+      //   console.log('disconnect');
+      // });
         // socketUtil.attachDisconnectEvent((msg) => {
         //   if (msg.code === 1) {
         //     message.success('断开成功!');
@@ -42,7 +49,13 @@ class Dialog extends React.Component {
       // });
     }
   }
-  componentWillUnmount() {
+  componentDidMount() {
+    const { socket } = this.state;
+    socket.emit('disconnectRequest');
+    socket.on('disConnectEvent', () => {
+      socket.disconnect();
+      message.success('断开成功!');
+    });
     // socket.emit('disconnectRequest');
     // socket.on('disConnectEvent', function () {
     //   console.log('disconnect!');
