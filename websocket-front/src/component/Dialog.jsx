@@ -17,6 +17,7 @@ class Dialog extends React.Component {
   };
   componentWillMount() {
     // const { socket, socketUtil } = this.props;
+    const { form } = this.props;
     const socket = io.connect('http://127.0.0.1:3000');
     this.setState({
       socket,
@@ -41,6 +42,9 @@ class Dialog extends React.Component {
           duration: 10,
           placement: 'bottomRight',
         });
+        let chat = form.getFieldValue('content');
+        chat += data.data.concat('\n');
+        form.setFieldsValue({ content: chat });
       });
       socket.on('message', (data) => {
         notification.info({
@@ -99,11 +103,15 @@ class Dialog extends React.Component {
     // }
   }
   handleSubmit = (e) => {
+    const { form } = this.props;
     const { socket } = this.state;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         socket.send(values.message);
+        let chat = form.getFieldValue('content');
+        chat += values.message.concat('\n');
+        form.setFieldsValue({ content: chat });
       }
     });
   }
@@ -117,9 +125,9 @@ class Dialog extends React.Component {
               <Col span={24}>
                 <FormItem>
                   {getFieldDecorator('content', {
-                    initialValue: '请在下方输入...',
+                    initialValue: '',
                   })(
-                    <TextArea rows={26} className="dialog-content" disabled="true" />
+                    <TextArea rows={26} className="dialog-content" disabled="true" placeholder="请在下方输入..." />
                   )}
                 </FormItem>
               </Col>
