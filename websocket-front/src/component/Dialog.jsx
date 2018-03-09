@@ -25,6 +25,15 @@ class Dialog extends React.Component {
       socket.on('connect', () => {
         message.success('连接成功!');
       });
+      socket.on('broad', (data) => {
+        console.log(data.data.toString());
+        notification.warning({
+          message: '消息通知',
+          description: decodeURI(data.data),
+          duration: 4.5,
+          placement: 'bottomRight',
+        });
+      });
       socket.on('message', (data) => {
         notification.info({
           message: '消息通知',

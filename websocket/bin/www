@@ -28,8 +28,9 @@ io.sockets.on('connection', function (socket) {
   // socket.emit('connecting');
   // socket.on('connect', function () {
   //   console.log('connection has been created.');
-  //   // socket.emit('connecting', { code: 1, message: '????!' });
+  //   // socket.emit('connecting', { code: 1, message: '连接成功!' });
   // });
+  socket.emit('broad', { data: '推送...' });
   socket.on('message', function (data) {
     console.log('data has been received %s',data);
     socket.send(data);
