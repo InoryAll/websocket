@@ -34,6 +34,14 @@ class Dialog extends React.Component {
           placement: 'bottomRight',
         });
       });
+      socket.on('chatting', (data) => {
+        notification.info({
+          message: '聊天室',
+          description: data.data,
+          duration: 10,
+          placement: 'bottomRight',
+        });
+      });
       socket.on('message', (data) => {
         notification.info({
           message: '消息通知',
